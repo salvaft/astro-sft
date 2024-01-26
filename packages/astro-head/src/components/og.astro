@@ -1,0 +1,49 @@
+---
+interface Props {
+  og: {
+    title: string;
+    description: string;
+    img: string;
+    alt: string;
+  };
+  twitter: {
+    title: string;
+    description: string;
+    img: string;
+    site: string;
+  };
+  locales: Record<string, string>;
+}
+
+let { currentLocale } = Astro;
+if (!currentLocale) {
+  console.log("No current locale, using default");
+}
+currentLocale = currentLocale ?? "en";
+
+const { og, twitter, locales }: Props = Astro.props;
+const ogLocale = locales[currentLocale];
+---
+
+<meta property="og:description" content={og.description} />
+<meta property="og:url" content={Astro.url.origin} />
+<meta property="og:image" content={og.img} />
+<meta property="og:image:alt" content={og.alt} />
+
+{
+  Object.entries(locales)
+    .filter(([locale, _]) => Astro.currentLocale !== locale)
+    .map(([_, code]) => {
+      return <meta property="og:locale:alternate" content={code} />;
+    })
+}
+<meta property="og:locale" content={ogLocale} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={og.title} />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@salvaft_dev" />
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+<meta name="twitter:image" content={Astro.url.origin + twitter.img} />

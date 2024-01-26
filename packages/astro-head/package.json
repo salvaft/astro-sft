@@ -1,0 +1,25 @@
+{
+  "name": "@salvaft/astro-head",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Pre made head components for Astro",
+  "keywords": [],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "author": "https://github.com/salvaft",
+  "license": "ISC",
+  "devDependencies": {
+    "astro": "^4.2.3"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.4.1",
+    "sharp": "^0.33.2"
+  }
+}
