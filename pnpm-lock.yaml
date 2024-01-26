@@ -26,13 +26,13 @@ importers:
       '@astrojs/check':
         specifier: ^0.4.1
         version: 0.4.1(typescript@5.3.3)
-      sharp:
-        specifier: ^0.33.2
-        version: 0.33.2
     devDependencies:
       astro:
         specifier: ^4.2.3
         version: 4.2.3(typescript@5.3.3)
+      sharp:
+        specifier: ^0.33.2
+        version: 0.33.2
 
 packages:
 
@@ -363,7 +363,7 @@ packages:
     requiresBuild: true
     dependencies:
       tslib: 2.6.2
-    dev: false
+    dev: true
     optional: true
 
   /@esbuild/aix-ppc64@0.19.11:
@@ -558,7 +558,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-darwin-arm64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-darwin-x64@0.33.2:
@@ -569,7 +569,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-darwin-x64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-darwin-arm64@1.0.1:
@@ -578,7 +578,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-darwin-x64@1.0.1:
@@ -587,7 +587,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linux-arm64@1.0.1:
@@ -596,7 +596,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linux-arm@1.0.1:
@@ -605,7 +605,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linux-s390x@1.0.1:
@@ -614,7 +614,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linux-x64@1.0.1:
@@ -623,7 +623,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linuxmusl-arm64@1.0.1:
@@ -632,7 +632,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-libvips-linuxmusl-x64@1.0.1:
@@ -641,7 +641,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linux-arm64@0.33.2:
@@ -652,7 +652,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linux-arm64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linux-arm@0.33.2:
@@ -663,7 +663,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linux-arm': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linux-s390x@0.33.2:
@@ -674,7 +674,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linux-s390x': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linux-x64@0.33.2:
@@ -685,7 +685,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linux-x64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linuxmusl-arm64@0.33.2:
@@ -696,7 +696,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linuxmusl-arm64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-linuxmusl-x64@0.33.2:
@@ -707,7 +707,7 @@ packages:
     requiresBuild: true
     optionalDependencies:
       '@img/sharp-libvips-linuxmusl-x64': 1.0.1
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-wasm32@0.33.2:
@@ -717,7 +717,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@emnapi/runtime': 0.45.0
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-win32-ia32@0.33.2:
@@ -726,7 +726,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@img/sharp-win32-x64@0.33.2:
@@ -735,7 +735,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -2901,7 +2901,7 @@ packages:
       '@img/sharp-wasm32': 0.33.2
       '@img/sharp-win32-ia32': 0.33.2
       '@img/sharp-win32-x64': 0.33.2
-    dev: false
+    dev: true
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -3135,7 +3135,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /tunnel-agent@0.6.0:
