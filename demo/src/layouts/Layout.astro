@@ -1,11 +1,28 @@
 ---
-import { Favicon } from "@salvaft/astro-head";
+import { Favicon, OpenGraph } from "@salvaft/astro-head";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const og = {
+  title: " asdf",
+  description: "asdf",
+  img: "/headshot-og.webp",
+  alt: "asdf",
+};
+const twitter = {
+  title: "asdf",
+  description: "asdf",
+  img: `${Astro.url.origin}/headshot-og.webp`,
+  site: "@salvaft_dev",
+};
+export const locales = {
+  es: "es_ES",
+  en: "en_US",
+  fr: "fr_FR",
+};
 ---
 
 <!doctype html>
@@ -14,6 +31,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
   </head>
   <Favicon input="headshot.webp" />
+  <OpenGraph {locales} {og} {twitter} />
   <meta name="description" content="Astro description" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
