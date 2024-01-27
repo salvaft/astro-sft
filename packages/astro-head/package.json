@@ -4,6 +4,10 @@
   "type": "module",
   "description": "Pre made head components for Astro",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salvaft/astro-sft.git"
+  },
   "exports": {
     ".": "./src/index.ts"
   },
