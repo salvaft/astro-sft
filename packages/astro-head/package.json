@@ -6,7 +6,8 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/salvaft/astro-sft.git"
+    "url": "git+https://github.com/salvaft/astro-sft.git",
+    "directory": "packages/astro-head"
   },
   "exports": {
     ".": "./src/index.ts"
