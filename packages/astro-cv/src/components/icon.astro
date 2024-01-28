@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  [key: string]: any;
+}
+const { name, ...rest } = Astro.props;
+async function getIcon(name: string) {
+  const icons = await Astro.glob("../icons/*.icon.astro");
+  const theIcon = icons.find((icon) => {
+    const filename = icon.default.moduleId?.split("/").pop()?.split(".")[0];
+    return filename && filename === name;
+  });
+  if (!theIcon) throw new Error(`Icon ${name} not found`);
+  return theIcon.default;
+}
+const IconElement = await getIcon(name);
+---
+
+<IconElement {...rest} />

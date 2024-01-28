@@ -1,0 +1,41 @@
+---
+import Job from "#/components/two_columns/Job.astro";
+import SectionHeading from "./SectionHeading.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  work: CollectionEntry<"work">[];
+}
+const { work } = Astro.props;
+---
+
+<style>
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding-right: var(--section-padding-right);
+  }
+</style>
+<section>
+  <SectionHeading>Work Experience</SectionHeading>
+  <div>
+    {
+      work.map(async (entry) => {
+        const { data } = entry;
+        return (
+          <>
+            <Job
+              position={data.title}
+              organization={data.organization}
+              where={data.where}
+              when={data.when}
+              description={data.description}
+            />
+          </>
+        );
+      })
+    }
+  </div>
+</section>

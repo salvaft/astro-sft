@@ -1,0 +1,64 @@
+---
+import Aside from "#/components/two_columns/Aside.astro";
+import About from "#/components/two_columns/About.astro";
+import Experience from "#/components/two_columns/Experience.astro";
+import Skills from "./Skills.astro";
+import Header from "#/components/two_columns/Header.astro";
+
+import two_colsCSS from "#/styles/two_cols.css?url";
+
+import type {TPersonal, TProfile, TSkills, TEducation, TWork, TLanguages } from "#/schemas/collection.ts"
+
+
+interface Props {
+  profile: TProfile,
+  education: TEducation[],
+  work: TWork[],
+  personal: TPersonal,
+  skills: TSkills,
+  languages: TLanguages
+}
+
+const { profile,  education,  work, personal, skills, languages } = Astro.props;
+
+
+---
+
+<link rel="stylesheet" href={two_colsCSS} />
+<style>
+  .wrapper {
+    display: flex;
+    height: 100%;
+    font-family: var(--font-onest);
+    min-height: 297mm;
+    max-height: 297mm;
+  }
+
+  .content {
+    background-color: #fff;
+    width: 100%;
+    padding-top: 3rem;
+  }
+  main {
+    margin-top: 2rem;
+    padding-inline: 3rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @media screen and (max-width <= 768px) {
+      padding-inline: 0rem 0rem;
+    }
+  }
+</style>
+
+<div class="wrapper">
+  <Aside {education} {languages} social={personal.data.social} />
+  <div class="content">
+    <Header {personal}/>
+    <main>
+      <About {profile} />
+      <Experience {work} />
+      <Skills {skills} />
+    </main>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+:root {
+    /* Spacing */
+    --btw-sections: 1.5rem;
+    --btw-articles: 0.8rem;
+    --btw-p: 0.3rem;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+    margin-top: 20mm;
+}
+
+@page :first {
+    margin-top: 0;
+    margin-bottom: 15mm;
+}
+
+article {
+    page-break-inside: avoid;
+}

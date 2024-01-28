@@ -1,0 +1,77 @@
+---
+import SectionHeading from "#/components/meneillos/SectionHeading.astro";
+import ArticleHeader from "#/components/meneillos/ArticleHeader.astro";
+import type { Entries } from "#/components/meneillos/base.astro";
+
+interface Props {
+  title: string;
+  langs?: boolean;
+  entries?: Entries;
+  text?: string;
+}
+
+let { title, entries, text } = Astro.props;
+---
+
+<section>
+  <SectionHeading>{title}</SectionHeading>
+  {
+    entries && (
+      <ul class="long-entries">
+        {entries.map(async (entry) => {
+          const { data } = entry;
+          const { Content } = await entry.render();
+          return (
+            <li>
+              <article>
+                <ArticleHeader
+                  title={data.title}
+                  place={data.organization}
+                  where={data.where}
+                  when={data.when}
+                />
+                <Content />
+              </article>
+            </li>
+          );
+        })}
+      </ul>
+    )
+  }
+
+  {text && <p>{text}</p>}
+</section>
+
+<style>
+  ul {
+    display: grid;
+  }
+  .long-entries {
+    gap: var(--btw-articles);
+  }
+  section {
+    font-family: var(--font-poppins);
+    font-size: var(--step--2);
+    color: var(--gris-oscuro);
+    p {
+      font-weight: 300;
+      line-height: var(--lh);
+    }
+  }
+
+  article {
+    display: grid;
+    gap: var(--btw-p);
+    & :global(strong) {
+      font-weight: 500;
+    }
+    & :global(ul) {
+      padding-left: 1rem;
+    }
+    & :global(li) {
+      font-weight: 300;
+      line-height: var(--lh-lg);
+      list-style-type: disc;
+    }
+  }
+</style>

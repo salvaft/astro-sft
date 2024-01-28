@@ -1,0 +1,12 @@
+company: "Company"
+description: "This is a description"
+author: "John Doe"
+logo: "/favicon.webp"
+tags: ["cv", "astro"]
+education:
+  - education-one
+jobs:
+  - job-one
+  - job-two
+profile: a
+

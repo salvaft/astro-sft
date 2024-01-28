@@ -1,0 +1,47 @@
+---
+
+import Section from "#/components/meneillos/Section.astro";
+import Header from "#/components/meneillos/Header.astro";
+import Skills from "#/components/meneillos/Skills.astro";
+import Languages from "#/components/meneillos/Languages.astro";
+import meneillosCSS from "#/styles/meneillos.css?url";
+
+import type {CollectionEntry} from "astro:content";
+
+interface Props {
+  profile: CollectionEntry<"profile">,
+  education: CollectionEntry<"education">[],
+  work: CollectionEntry<"work">[],
+  personal: CollectionEntry<"personal">,
+  languages: CollectionEntry<"languages">,
+  skills: CollectionEntry<"skills">,
+}
+const { profile,  education,  work, personal, languages, skills } = Astro.props;
+
+
+export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
+---
+
+<link rel="stylesheet" href={meneillosCSS} />
+<style>
+  .wrapper {
+    padding: 10mm 20mm;
+    background-color: #fff;
+    min-height: 297mm;
+    display: grid;
+    gap: var(--btw-sections);
+    font-family: var(--font-hedvig);
+
+    @media screen and (width <= 210mm) {
+      padding: 5mm 10mm;
+    }
+  }
+</style>
+<div class="wrapper">
+  <Header {personal} />
+  <Section title="Profile" text={profile.data.text} />
+  <Section title="Education" entries={education} />
+  <Section title="Work" entries={work} />
+  <Skills {skills}/>
+  <Languages {languages}/>
+</div>

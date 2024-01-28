@@ -1,0 +1,68 @@
+---
+import Menu from "../components/menu.astro";
+import "#/styles/reset.css";
+import "#/styles/global.css";
+import "#/styles/print.css";
+interface Props {
+  "data-singlePage"?: boolean;
+  slug?: string;
+}
+
+const {"data-singlePage":singlePage,slug} = Astro.props;
+---
+
+  <Menu slug={slug} style={singlePage?"display:none":""} />
+  <main class="page-wrapper">
+    <slot />
+  </main>
+  <a href="/" style={singlePage?"display:none":""}>Return</a>
+
+<style>
+  a {
+    padding: 0.5rem;
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    background-color: var(--gris-claro);
+    color: var(--dark-gray);
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: var(--font-poppins);
+
+    &:hover {
+      background-color: var(--dark-gray);
+      color: #fff;
+    }
+    @media screen and (width <= 230mm) {
+      display: none;
+    }
+    @media print {
+      display: none;
+    }
+  }
+  body {
+    background-color: #525659;
+    padding-block: var(--step-3);
+    @media print {
+      background-color: #fff;
+      padding-block: 0;
+    }
+    @media screen and (width <= 210mm) {
+      padding-block: 0;
+    }
+  }
+  .page-wrapper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(34, 34, 34, 0.502);
+    background-color: #fff;
+    @media print {
+      box-shadow: none;
+    }
+    @media screen and (width <= 210mm) {
+      min-width: auto;
+      width: 100%;
+    }
+  }
+</style>

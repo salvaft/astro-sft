@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Libre+Baskerville:wght@400;700&family=Montserrat+Alternates:wght@400;700&family=Onest:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    /* Typography */
+    --step--3: clamp(0.64rem, 0.6552rem + -0.0196vw, 0.6513rem);
+    --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+    --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+    --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+    --step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+    --step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+
+    --font-libre: "Libre Baskerville", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-montse: "Montserrat Alternates", sans-serif;
+    --font-onest: "Onest", sans-serif;
+    --font-hedvig: "Hedvig Letters Sans", sans-serif;
+
+    /* Line Height Spacing */
+    --lh: 16px;
+    --lh-lg: 20px;
+
+
+    /* Colors */
+    --gris-claro: #bababa;
+    --gris-apagado: #666;
+    --gris-oscuro: #444;
+    --gris-mas-oscuro: #333;
+    --gris-muy-oscuro: hsl(240, 5%, 18%);
+    --dark-gray: hsl(240, 9%, 14%);
+    --azul-muted: hsl(207.43deg 56.76% 36.27%);
+    --azul-claro: hsl(207, 81%, 61%);
+    --dark-blue: rgb(17, 24, 39);
+    --yellow: hsl(46, 98%, 56%);
+    --yellow-muted: hsl(46deg 90% 62% / 0.5);
+
+}

@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  contactData: CollectionEntry<"cls">["data"]["contact"]
+}
+const { contactData } = Astro.props;
+const recipient = contactData.fullName ?? "Hiring Manager";
+const idx = contactData.companyAddress.indexOf(",");
+const street = contactData.companyAddress.slice(0, idx);
+const country = contactData.companyAddress.slice(idx + 1);
+---
+
+<div class="wrapper">
+  <span class="to"> To:</span>
+  <div class="data">
+    <span> {recipient}</span>
+    {contactData.position && <span> {contactData.position}</span>}
+    <span> {street}</span>
+    <span> {country}</span>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    margin-block: 1rem;
+  }
+  .data {
+    margin-inline-start: 0.5rem;
+    font-size: var(--step--1);
+    color: var(--gris-oscuro);
+  }
+  .to {
+    font-style: italic;
+    display: block;
+    color: var(--gris-claro);
+  }
+  span {
+    display: block;
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import Social from "#/components/two_columns/Social.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  education: CollectionEntry<"education">[];
+  languages: CollectionEntry<"languages">;
+  social: CollectionEntry<"personal">["data"]["social"];
+}
+const { education, languages:{data:langs}, social } = Astro.props;
+---
+
+<style>
+  aside {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 297mm;
+    width: 60%;
+    background-color: var(--dark-gray);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--step--2);
+  }
+  h1 {
+    font-size: var(--step--1);
+    font-weight: bold;
+    border-bottom: 2px solid var(--yellow);
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: var(--step--2);
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.2rem;
+  }
+  ul {
+    margin-top: 1rem;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+      span {
+        display: block;
+      }
+    }
+  }
+  .caps {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .padded {
+    padding-left: 2rem;
+    ul {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .photo {
+    width: 100%;
+    height: 300px;
+    background-image: url(/headshot.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<aside>
+  <div class="photo"></div>
+
+  <div class="padded">
+    <h1 class="caps">Education</h1>
+    <ul>
+      {
+        education.map(async (education) => {
+          const { data } = education;
+          return (
+            <li>
+              <h2 class="caps">{data.titleShort}</h2>
+              <span>{data.placeShort}</span>
+              <span>{data.when}</span>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+  <div class="padded">
+    <h1 class="caps">Languages</h1>
+    <ul>
+      {
+        Object.entries(langs).map(([lang, data]) => {
+          return (
+            <li>
+              <h2 class="caps">
+                {lang} - {data.flag}
+              </h2>
+              <span>{data.proficiency}</span>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+  <Social {social} />
+</aside>

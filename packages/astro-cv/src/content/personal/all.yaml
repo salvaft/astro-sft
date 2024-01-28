@@ -1,0 +1,13 @@
+name: Jane
+surname: Doe
+profession: Professional title
+social:
+  Github: 
+    username: jdoe
+    href: https://github.com/jdoe
+  Linkedin: 
+    username: jdoe
+    href: https://www.linkedin.com/in/jdoe
+  Email: 
+    username: jdoe
+    href: mailto:jdoe@gmail.com

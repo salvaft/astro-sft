@@ -1,0 +1,33 @@
+---
+const { ...rest } = Astro.props;
+---
+
+<div {...rest}>
+  <h1>
+    <slot />
+  </h1>
+  <hr />
+</div>
+
+<style>
+  div {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  h1 {
+    font-size: var(--step-1);
+    font-weight: bold;
+    font-family:
+      Hedvig Letters Sans,
+      sans-serif;
+    color: var(--gris-oscuro);
+  }
+  hr {
+    flex-grow: 1;
+    margin-left: 1rem;
+    height: 1px;
+    border-color: var(--gris-claro);
+  }
+</style>

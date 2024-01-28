@@ -1,0 +1,170 @@
+---
+import  Icon  from "#/components/icon.astro";
+const flavorsFiles = await Astro.glob("./*/base.astro");
+
+const flavors = flavorsFiles.map((flav) => {
+  return {
+    name: flav.default.moduleId?.split("/").at(-2),
+  };
+});
+const { slug, ...rest } = Astro.props;
+// const currentFlavor = Astro.url.pathname.split("/").at(-1);
+const currentFlavor = "meneillos";
+
+---
+
+<div class="menu" {...rest}>
+  <div class="menu--btn menu--btn_display"><Icon name="rcaret" /></div>
+  <div class="menu--items">
+    <div class="cv">
+      {
+        flavors.map((flav, idx) => {
+          if (!flav.name) return;
+          return (
+            <a
+              class="menu--btn menu--btn_link"
+              href={`/cv/${slug}/${flav.name}`}
+              data-active={Astro.url.pathname.includes(flav.name)}
+            >
+              <Icon name="docs" />
+              {idx}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <a
+      class="menu--btn menu--btn_link"
+      href={`/cl/${slug}/${currentFlavor}`}
+      data-active={Astro.url.pathname.includes("cl")}>Cover Letter</a
+    >
+    <button class="menu--btn menu--btn_print" id="printButton"
+      ><Icon name="printer" /></button
+    >
+    <a
+      class="menu--btn menu--btn_link"
+      href={`/`}
+      id="returnButton"
+      data-active={Astro.url.pathname.includes("cl")}>Return</a
+    >
+  </div>
+</div>
+<script>
+  // document.addEventListener("astro:page-load", () => {
+  document
+    .getElementById("printButton")!
+    .addEventListener("click", function () {
+      window.print();
+    });
+  // });
+</script>
+<style>
+  .cv {
+    display: flex;
+    gap: 0.5rem;
+  }
+  #returnButton {
+    display: none;
+    @media screen and (width <= 210mm) {
+      display: block;
+    }
+  }
+  a {
+    text-decoration: wavy underline;
+  }
+  .menu {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    font-family: var(--font-poppins);
+
+    @media print {
+      display: none;
+    }
+
+    /* Keep slided when hovering the whole menu */
+    &:hover .menu--items {
+      animation: slideIn 0.3s ease-in-out both;
+      display: flex;
+    }
+
+    /* Keep caret rotated when hovering the whole menu */
+    &:hover .menu--btn_display {
+      & svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .menu--items {
+    margin-left: 0.5rem;
+    transform: translateX(-100%);
+    animation: slideOut 0.3s ease-in-out both;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 100px;
+  }
+  .menu--btn {
+    cursor: pointer;
+    color: #333;
+    background-color: #aaa;
+    border-radius: 2px;
+    box-shadow: 0 4px 5px rgba(34, 34, 34, 0.502);
+    display: grid;
+    place-content: center;
+    z-index: 10;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+  .menu--btn_display {
+    min-height: 150px;
+    & svg {
+      transition: transform 0.3s ease-in-out;
+    }
+    @media screen and (width <= 210mm) {
+      min-height: 150px;
+    }
+  }
+  .menu--btn_link {
+    padding: 0.2rem 0.3rem 0.5rem 0.5rem;
+    text-align: center;
+  }
+  .menu--btn_print {
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+  }
+
+  [data-active] {
+    background-color: hsl(16 100% 66% / 0.8);
+    &:hover {
+      background-color: hsl(16 100% 66% / 1);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      display: none;
+    }
+    to {
+      transform: translateX(0%);
+      display: flex;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0%);
+      display: flex;
+    }
+    to {
+      transform: translateX(-100%);
+      display: none;
+    }
+  }
+</style>

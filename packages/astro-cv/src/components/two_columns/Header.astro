@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+
+interface Props {
+  personal: CollectionEntry<"personal">
+}
+const {personal:{data:personal}} = Astro.props
+
+---
+
+<style>
+  header {
+    background-color: var(--yellow);
+    width: 100%;
+    font-family: var(--font-poppins);
+    padding: 2rem 0 2rem 2rem;
+
+    h1 {
+      font-size: var(--step-2);
+      font-weight: 200;
+    }
+    h2 {
+      font-size: var(--step-1);
+      font-weight: 200;
+    }
+  }
+
+  .caps {
+    text-transform: uppercase;
+  }
+  .bold {
+    font-weight: bold;
+  }
+</style>
+<header>
+  <h1>{personal.name} <span class="caps bold">{personal.surname}</span></h1>
+  <h2 class="caps">{personal.profession}</h2>
+</header>

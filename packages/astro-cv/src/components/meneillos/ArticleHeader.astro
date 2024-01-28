@@ -1,0 +1,41 @@
+---
+const { title, where, when, place, ...rest } = Astro.props;
+---
+
+<header {...rest}>
+  <div class="left"><h2>{title}</h2><h3>{place}</h3></div>
+  <div class="right"><span class="where">{where}</span><span>{when}</span></div>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+  h2 {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--gris-mas-oscuro);
+  }
+  h3 {
+    font-size: var(--step--3);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gris-apagado);
+  }
+  .left {
+    width: 75%;
+
+    max-width: 75%;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .where {
+    font-style: italic;
+    width: max-content;
+    color: var(--azul-muted);
+  }
+</style>

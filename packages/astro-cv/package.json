@@ -1,0 +1,41 @@
+{
+  "name": "@salvaft/astro-cv",
+  "description": "Design system for CV and letter generation in Astro",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salvaft/astro-sft.git",
+    "directory": "packages/astro-cv"
+  },
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./layouts": "./src/layouts/layouts.ts",
+    "./components": "./src/components/components.ts",
+    "./cv/flavors": "./src/components/cv-flavors.ts",
+    "./cl/flavors": "./src/components/cl-flavors.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "keywords": [
+    "astro-component"
+  ],
+  "scripts": {
+    "dev": "astro sync",
+    "install": "node src/scripts/installation.js"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^2.1.0",
+    "astro": "^4.2.6"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.4.1"
+  }
+}

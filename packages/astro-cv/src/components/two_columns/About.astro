@@ -1,0 +1,25 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import type { CollectionEntry } from "astro:content";
+
+
+interface Props {
+  profile: CollectionEntry<"profile">,
+
+}
+
+const { profile } = Astro.props;
+---
+
+<style>
+  p {
+    font-size: var(--step--2);
+    padding-right: var(--section-padding-right);
+  }
+</style>
+<section>
+  <SectionHeading>About me</SectionHeading>
+  <p>
+    {profile.data.text}
+  </p>
+</section>

@@ -1,0 +1,22 @@
+/* Particular styles for printing (hiding elements etc) are defined in the respective page styles */
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
+
+h1+p,
+h2+p,
+h3+p {
+    page-break-before: avoid;
+}
+
+table,
+figure {
+    page-break-inside: avoid;
+}

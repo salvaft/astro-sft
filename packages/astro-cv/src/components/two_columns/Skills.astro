@@ -1,0 +1,39 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import Skill from "./Skill.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  skills: CollectionEntry<"skills">;
+}
+const {
+  skills: {data:{short: skills }},
+} = Astro.props;
+---
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  .skills {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem 0;
+    padding-right: var(--section-padding-right);
+  }
+</style>
+<section>
+  <SectionHeading>Skills</SectionHeading>
+  <div class="grid">
+    <div class="skills">
+      {
+        Object.entries(skills).map(([key, value]) => (
+          <Skill percentage={value} key={key} />
+        ))
+      }
+    </div>
+  </div>
+</section>
