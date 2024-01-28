@@ -6,6 +6,10 @@
     "url": "git+https://github.com/salvaft/astro-sft.git",
     "directory": "packages/astro-cv"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "version": "0.0.1",
   "type": "module",
   "exports": {
