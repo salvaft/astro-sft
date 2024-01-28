@@ -1,0 +1,20 @@
+{
+  "name": "cv",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.4.1",
+    "@astrojs/mdx": "^2.1.0",
+    "@salvaft/astro-cv": "workspace:*",
+    "astro": "^4.2.6",
+    "typescript": "^5.3.3"
+  },
+  "version": null
+}

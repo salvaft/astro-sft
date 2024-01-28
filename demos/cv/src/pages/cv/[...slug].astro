@@ -1,0 +1,44 @@
+---
+import { getCollection, getEntries, getEntry } from "astro:content";
+import { Sheet } from "@salvaft/astro-cv/layouts";
+import Base from "../../layouts/base.astro";
+import type { AstroInstance } from "astro";
+
+export async function getStaticPaths() {
+  const cvEntries = await getCollection("cvs");
+
+  const pages = cvEntries.map(async (entry) => {
+    const flavorsFiles: AstroInstance[] = await Astro.glob(
+      "../../../node_modules/@salvaft/astro-cv/src/components/*/base.astro"
+    );
+
+    const flavors = flavorsFiles.map((flav) => {
+      return {
+        name: flav.default.moduleId?.split("/").at(-2),
+        component: flav.default,
+      };
+    });
+
+    return flavors.map((flavor) => ({
+      params: { slug: entry.id + "/" + flavor.name },
+      props: { entry, Flavor: flavor.component },
+    }));
+  });
+  return (await Promise.all(pages)).flat();
+}
+
+const { entry, Flavor } = Astro.props;
+
+const work = await getEntries(entry.data.jobs);
+const education = await getEntries(entry.data.education);
+const profile = await getEntry(entry.data.profile);
+const personal = await getEntry("personal", "all");
+const skills = await getEntry("skills", "percentages");
+const languages = await getEntry("languages", "all");
+---
+
+<Base>
+  <Sheet slug={entry.id}>
+    <Flavor {work} {profile} {education} {personal} {skills} {languages} />
+  </Sheet>
+</Base>

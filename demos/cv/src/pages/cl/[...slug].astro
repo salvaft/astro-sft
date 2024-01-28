@@ -1,0 +1,39 @@
+---
+import { getCollection, getEntries, getEntry } from "astro:content";
+import { Sheet } from "@salvaft/astro-cv/layouts";
+import Base from "../../layouts/base.astro";
+import type { AstroInstance } from "astro";
+
+export async function getStaticPaths() {
+  const clEntries = await getCollection("cls");
+
+  const pages = clEntries.map(async (entry) => {
+    const flavorsFiles: AstroInstance[] = await Astro.glob(
+      "../../../node_modules/@salvaft/astro-cv/src/components/**/letter/base.astro"
+    );
+
+    const flavors = flavorsFiles.map((flav) => {
+      return {
+        name: flav.default.moduleId?.split("/").at(-3),
+        component: flav.default,
+      };
+    });
+    return flavors.map((flavor) => ({
+      params: { slug: entry.id.slice(0,entry.id.indexOf(".")) + "/" + flavor.name },
+      props: { entry, Flavor: flavor.component },
+    }));
+  });
+  return (await Promise.all(pages)).flat();
+}
+
+const { entry, Flavor } = Astro.props;
+
+const personal = await getEntry("personal", "all");
+
+---
+
+<Base>
+  <Sheet slug={entry.id}>
+    <Flavor  {personal}  {entry} />
+  </Sheet>
+</Base>
