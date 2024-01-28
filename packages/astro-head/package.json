@@ -1,6 +1,6 @@
 {
   "name": "@salvaft/astro-head",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "description": "Pre made head components for Astro",
   "keywords": [],
