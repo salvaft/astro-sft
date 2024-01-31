@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntries, getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import { Sheet } from "@salvaft/astro-cv/layouts";
 import Base from "../../layouts/base.astro";
 import type { AstroInstance } from "astro";
@@ -19,21 +19,22 @@ export async function getStaticPaths() {
       };
     });
     return flavors.map((flavor) => ({
-      params: { slug: entry.id.slice(0,entry.id.indexOf(".")) + "/" + flavor.name },
-      props: { entry, Flavor: flavor.component },
+      params: {
+        slug: entry.slug + "/" + flavor.name,
+      },
+      props: { entry, Flavor: flavor.component, flavor: flavor.name },
     }));
   });
   return (await Promise.all(pages)).flat();
 }
 
-const { entry, Flavor } = Astro.props;
+const { entry, Flavor, flavor } = Astro.props;
 
 const personal = await getEntry("personal", "all");
-
 ---
 
-<Base>
-  <Sheet slug={entry.id}>
-    <Flavor  {personal}  {entry} />
+<Base title={`${entry.data.organization} - ${flavor}`}>
+  <Sheet slug={entry.slug}>
+    <Flavor {personal} {entry} />
   </Sheet>
 </Base>

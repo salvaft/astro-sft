@@ -21,13 +21,13 @@ export async function getStaticPaths() {
 
     return flavors.map((flavor) => ({
       params: { slug: entry.id + "/" + flavor.name },
-      props: { entry, Flavor: flavor.component },
+      props: { entry, Flavor: flavor.component, flavor: flavor.name },
     }));
   });
   return (await Promise.all(pages)).flat();
 }
 
-const { entry, Flavor } = Astro.props;
+const { entry, Flavor, flavor } = Astro.props;
 
 const work = await getEntries(entry.data.jobs);
 const education = await getEntries(entry.data.education);
@@ -37,7 +37,7 @@ const skills = await getEntry("skills", "percentages");
 const languages = await getEntry("languages", "all");
 ---
 
-<Base>
+<Base title={`${entry.data.company} - ${flavor}`}>
   <Sheet slug={entry.id}>
     <Flavor {work} {profile} {education} {personal} {skills} {languages} />
   </Sheet>
