@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.1.1
+
+### Patch Changes
+
+- Meneillos header now displays subtitle from personal profession
+
 ## 0.1.0
 
 ### Minor Changes
