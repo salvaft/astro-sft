@@ -12,21 +12,6 @@ importers:
         specifier: ^2.27.1
         version: 2.27.1
 
-  demos/astro-head:
-    dependencies:
-      '@astrojs/check':
-        specifier: ^0.4.1
-        version: 0.4.1(typescript@5.3.3)
-      '@salvaft/astro-head':
-        specifier: workspace:*
-        version: link:../../packages/astro-head
-      astro:
-        specifier: ^4.2.3
-        version: 4.2.6(typescript@5.3.3)
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-
   demos/cv:
     dependencies:
       '@astrojs/check':
@@ -40,6 +25,21 @@ importers:
         version: link:../../packages/astro-cv
       astro:
         specifier: ^4.2.6
+        version: 4.2.6(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
+  demos/head:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.4.1
+        version: 0.4.1(typescript@5.3.3)
+      '@salvaft/astro-head':
+        specifier: workspace:*
+        version: link:../../packages/astro-head
+      astro:
+        specifier: ^4.2.3
         version: 4.2.6(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3

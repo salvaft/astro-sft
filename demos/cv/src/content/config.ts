@@ -29,6 +29,7 @@ const cls = defineCollection({
       email: z.string(),
       fullName: z.string(),
       companyAddress: z.string(),
+      position: z.string().optional(),
     }),
   }),
 });
@@ -42,9 +43,8 @@ const skills = defineCollection({
 });
 
 const profile = defineCollection({
-  type: "data",
+  type: "content",
   schema: z.object({
-    text: z.string(),
     tags: z.array(z.string()),
   }),
 });
