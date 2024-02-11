@@ -1,5 +1,12 @@
 # @salvaft/astro-cv
 
+## 0.1.0
+
+### Minor Changes
+
+- Changed profile collection to content collection.
+  Adapted profile section to receive a content collection entry and render the markup.
+
 ## 0.0.2
 
 ### Patch Changes
