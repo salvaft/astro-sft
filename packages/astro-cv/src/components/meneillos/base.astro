@@ -20,6 +20,7 @@ const { profile,  education,  work, personal, languages, skills } = Astro.props;
 
 
 export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
+export type Profile = CollectionEntry<"profile">;
 ---
 
 <link rel="stylesheet" href={meneillosCSS} />
@@ -39,7 +40,7 @@ export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
 </style>
 <div class="wrapper">
   <Header {personal} />
-  <Section title="Profile" text={profile.data.text} />
+  <Section title="Profile" profile={profile} />
   <Section title="Education" entries={education} />
   <Section title="Work" entries={work} />
   <Skills {skills}/>

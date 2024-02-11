@@ -43,9 +43,8 @@ const skills = defineCollection({
 });
 
 const profile = defineCollection({
-  type: "data",
+  type: "content",
   schema: z.object({
-    text: z.string(),
     tags: z.array(z.string()),
   }),
 });

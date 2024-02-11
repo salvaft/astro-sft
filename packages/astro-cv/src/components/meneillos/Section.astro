@@ -2,15 +2,22 @@
 import SectionHeading from "#/components/meneillos/SectionHeading.astro";
 import ArticleHeader from "#/components/meneillos/ArticleHeader.astro";
 import type { Entries } from "#/components/meneillos/base.astro";
+import type { Profile } from "#/components/meneillos/base.astro";
+
 
 interface Props {
   title: string;
   langs?: boolean;
   entries?: Entries;
-  text?: string;
+  profile?: Profile;
 }
 
-let { title, entries, text } = Astro.props;
+let { title, entries, profile } = Astro.props;
+
+let ProfileContent = null;
+if (profile) {
+  ProfileContent = (await profile.render()).Content
+}
 ---
 
 <section>
@@ -38,8 +45,7 @@ let { title, entries, text } = Astro.props;
       </ul>
     )
   }
-
-  {text && <p>{text}</p>}
+  {ProfileContent && <ProfileContent />}
 </section>
 
 <style>
