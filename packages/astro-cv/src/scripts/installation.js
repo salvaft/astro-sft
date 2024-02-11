@@ -35,4 +35,8 @@ function copyDirectorySync(source, destination) {
 }
 
 copyDirectorySync(sourceFolder, destinationFolder);
+const sourceConfig = resolve(sourceFolder, "config.ts");
+const destinationConfig = resolve(destinationFolder, "config.ts");
+copyFileSync(sourceConfig, destinationConfig);
+
 console.log("Content files copied successfully!");
