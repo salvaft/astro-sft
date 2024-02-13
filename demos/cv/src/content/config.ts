@@ -13,6 +13,7 @@ const cvs = defineCollection({
     education: z.array(reference("education")),
     profile: reference("profile"),
     tags: z.array(z.string()),
+    photo: z.boolean(),
   }),
 });
 
@@ -95,6 +96,7 @@ const personal = defineCollection({
     name: z.string(),
     surname: z.string(),
     profession: z.string(),
+    headshot: z.string().optional(),
   }),
 });
 
