@@ -3,67 +3,70 @@ import Social from "./Social.astro";
 import type {CollectionEntry} from "astro:content";
 
 interface Props {
-  letter?: boolean;
   personal:CollectionEntry<"personal">;
+  photo:boolean;
 }
-const { letter, personal } = Astro.props;
+const { personal, photo } = Astro.props;
 
 ---
-
-<header class:list={{ coverLetter: letter }}>
+<script>
+  const textBlockHeader = document.querySelector("#headerTextBlock");
+  const img = document.querySelector("#headshot") as HTMLImageElement;
+  if (textBlockHeader) {
+    img.style.height = textBlockHeader.clientHeight + "px";
+  }
+</script>
+<header >
+  <article >
+  { personal.data.headshot && <img id="headshot" src={personal.data.headshot} class:list={[{"show-if-photo":photo}]} alt=`Profile picture of ${personal.data.name}` />}
+  <main id="headerTextBlock">
   <h1><span class="name">{personal.data.name}</span> {personal.data.surname}</h1>
-  <div class="wrapper">
-    <div class="diploma">{personal.data.profession}</div>
-    <hr />
-    <span style={letter ? { display: "inline-block" } : { display: "none" }}>
-      -</span
-    >
-    <Social social={personal.data.social}/>
-  </div>
+    <div class="column">
+      <div class="diploma">{personal.data.profession}</div>
+      <hr />
+      <Social social={personal.data.social}/>
+    </div>
+  </main>
+</article>
+
 </header>
 <style>
-  .coverLetter {
+  article {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    background-color: var(--azul);
-    color: var(--blanco);
+    height: fit-content;
     text-align: center;
-    width: fit-content;
-    hr {
+    @media screen and (width < 728px) {
+      margin-inline: auto;
+    }
+
+  }
+  img {
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    height: 50px;
+    object-fit: cover;
+  }
+  .show-if-photo{
+    display: block;
+    @media screen and (width < 728px) {
       display: none;
-    }
-    h1 {
-      font-size: var(--step-2);
-      margin-left: auto;
-    }
-    .wrapper {
-      display: flex;
-      gap: 0.5rem;
-      span {
-        display: block !important;
-      }
-      :global(ul) {
-        gap: 0.5rem;
-      }
-      :global(li::before) {
-        margin-right: 0.5rem;
-      }
     }
   }
 
-  .wrapper {
-    display: grid;
-    gap: 0.5rem;
-    not(.coverLetter) span {
-      display: none;
-    }
+  main {
+    display: flex;
+    flex-direction: column;
   }
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
   p {
     font-size: var(--step--3);
-    text-align: center;
   }
   header {
     font-variant-caps: small-caps;
@@ -72,10 +75,9 @@ const { letter, personal } = Astro.props;
     font-weight: 400;
   }
   .diploma {
-    text-align: center;
     color: var(--azul-muted);
   }
-  header hr {
+  hr {
     background-image: linear-gradient(
       90deg,
       transparent,
@@ -90,6 +92,7 @@ const { letter, personal } = Astro.props;
     font-size: var(--step-3);
     font-weight: bold;
     font-family: var(--font-hedvig);
-    text-align: center;
+    height: fit-content;
+    line-height: var(--step-3);
   }
 </style>

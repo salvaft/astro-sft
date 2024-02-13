@@ -15,8 +15,9 @@ interface Props {
   personal: CollectionEntry<"personal">,
   languages: CollectionEntry<"languages">,
   skills: CollectionEntry<"skills">,
+  photo: boolean
 }
-const { profile,  education,  work, personal, languages, skills } = Astro.props;
+const { profile,  education,  work, personal, languages, skills, photo } = Astro.props;
 
 
 export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
@@ -39,7 +40,7 @@ export type Profile = CollectionEntry<"profile">;
   }
 </style>
 <div class="wrapper">
-  <Header {personal} />
+  <Header {personal} {photo} />
   <Section title="Profile" profile={profile} />
   <Section title="Education" entries={education} />
   <Section title="Work" entries={work} />
