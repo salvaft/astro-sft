@@ -1,5 +1,12 @@
 # @salvaft/astro-cv
 
+## 0.1.2
+
+### Patch Changes
+
+- Standalone header for cover letter in meneillos.
+  Ability to display or not headshot in meneillos.
+
 ## 0.1.1
 
 ### Patch Changes
