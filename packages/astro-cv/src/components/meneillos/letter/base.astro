@@ -1,5 +1,5 @@
 ---
-import Header from "../Header.astro";
+import Header from "./Header.astro";
 import Recipient from "./Recipient.astro";
 
 
@@ -8,7 +8,7 @@ const { Content } = await entry.render();
 ---
 
   <div class="wrapper">
-    <Header {personal} letter />
+    <Header {personal} />
     <Recipient contactData={entry.data.contact} />
     <Content />
   </div>

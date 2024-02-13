@@ -1,0 +1,74 @@
+---
+import Social from "../Social.astro";
+import type {CollectionEntry} from "astro:content";
+
+interface Props {
+  personal:CollectionEntry<"personal">;
+}
+const { personal } = Astro.props;
+
+---
+
+<header >
+  <div>
+  <h1><span class="name">{personal.data.name}</span> {personal.data.surname}</h1>
+  <div class="wrapper">
+    <div class="diploma">{personal.data.profession}</div>
+    <hr />
+    <span >
+      -</span
+    >
+    <Social social={personal.data.social}/>
+  </div>
+</div>
+
+</header>
+<style>
+  
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    background-color: var(--azul);
+    color: var(--blanco);
+    text-align: center;
+    width: fit-content;
+    font-variant-caps: small-caps;
+  }
+  .wrapper {
+      display: flex;
+      gap: 0.5rem;
+      span {
+        display: block !important;
+      }
+      :global(ul) {
+        gap: 0.5rem;
+      }
+      :global(li::before) {
+        margin-right: 0.5rem;
+      }
+    }
+  
+  p {
+    font-size: var(--step--3);
+    text-align: center;
+  }
+  
+  .name {
+    font-weight: 400;
+  }
+  .diploma {
+    text-align: center;
+    color: var(--azul-muted);
+  }
+  
+  h1 {
+    font-size: var(--step-2);
+      margin-left: auto;
+    font-weight: bold;
+    font-family: var(--font-hedvig);
+    text-align: center;
+  }
+</style>
