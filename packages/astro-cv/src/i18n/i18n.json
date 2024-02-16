@@ -1,0 +1,23 @@
+{
+  "en": {
+    "languages": { "title": "Languages" },
+    "work": { "title": "Work" },
+    "education": { "title": "Education" },
+    "profile": { "title": "Profile" },
+    "skills": { "title": "Skills" }
+  },
+  "es": {
+    "languages": { "title": "Idiomas" },
+    "work": { "title": "Experiencia laboral" },
+    "education": { "title": "Educación" },
+    "profile": { "title": "Perfil" },
+    "skills": { "title": "Habilidades" }
+  },
+  "fr": {
+    "languages": { "title": "Langages" },
+    "work": { "title": "Travail" },
+    "education": { "title": "Education" },
+    "profile": { "title": "Profil" },
+    "skills": { "title": "Compétences" }
+  }
+}
