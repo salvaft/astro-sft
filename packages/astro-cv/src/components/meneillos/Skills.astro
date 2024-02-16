@@ -2,12 +2,15 @@
 import SectionHeading from "./SectionHeading.astro";
 import Skill from "../two_columns/Skill.astro";
 import type { CollectionEntry } from "astro:content";
+import i18n from "#/i18n/i18n.json"
 
 
 interface Props {
   skills: CollectionEntry<"skills">;
+  lang: keyof typeof i18n;
+
 }
-const { skills } = Astro.props;
+const { skills, lang } = Astro.props;
 ---
 
 <style>
@@ -26,7 +29,7 @@ const { skills } = Astro.props;
   }
 </style>
 <section>
-  <SectionHeading>Skills</SectionHeading>
+  <SectionHeading>{i18n[lang]["skills"].title}</SectionHeading>
   <div class="grid">
     {
       Object.entries(skills.data.short).map(([key, value]) => (

@@ -1,18 +1,21 @@
 ---
 import SectionHeading from "#/components/meneillos/SectionHeading.astro";
 import ArticleHeader from "#/components/meneillos/ArticleHeader.astro";
-import type { Entries } from "#/components/meneillos/base.astro";
+import type { Entries,  } from "#/components/meneillos/base.astro";
 import type { Profile } from "#/components/meneillos/base.astro";
+import i18n from "#/i18n/i18n.json"
 
 
 interface Props {
-  title: string;
   langs?: boolean;
   entries?: Entries;
   profile?: Profile;
+  lang: keyof typeof i18n;
+  section: keyof typeof i18n[keyof typeof i18n];
+
 }
 
-let { title, entries, profile } = Astro.props;
+let { section, entries, profile,lang } = Astro.props;
 
 let ProfileContent = null;
 if (profile) {
@@ -21,7 +24,7 @@ if (profile) {
 ---
 
 <section>
-  <SectionHeading>{title}</SectionHeading>
+  <SectionHeading>{i18n[lang][section].title}</SectionHeading>
   {
     entries && (
       <ul class="long-entries">

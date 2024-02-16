@@ -4,19 +4,23 @@ import type {CollectionEntry} from "astro:content";
 import SectionHeading from "./SectionHeading.astro";
 interface Props {
   languages: CollectionEntry<"languages">;
+  lang: keyof typeof i18n;
 }
-const { languages } = Astro.props;
+const { languages, lang } = Astro.props;
+
+import i18n from "#/i18n/i18n.json"
+
 ---
 
 {
   languages && (
     <section>
-      <SectionHeading>Languages</SectionHeading>
+      <SectionHeading>{i18n[lang].languages.title}</SectionHeading>
       <ul>
-        {Object.entries(languages.data).map(([lang, entry]) => {
+        {Object.entries(languages.data).map(([language, entry]) => {
           return (
             <li>
-              {`${lang}: `} {entry.proficiency}
+              {`${language}: `} {entry.proficiency[lang]}
             </li>
           );
         })}
