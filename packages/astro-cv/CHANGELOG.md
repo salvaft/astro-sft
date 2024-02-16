@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.2.0
+
+### Minor Changes
+
+- a60bfcb: Add i18n to cv template
+
 ## 0.1.2
 
 ### Patch Changes
