@@ -9,4 +9,6 @@ jobs:
   - job-one
   - job-two
 profile: a
+lang: es
+photo: false
 

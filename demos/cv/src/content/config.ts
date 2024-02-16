@@ -14,6 +14,7 @@ const cvs = defineCollection({
     profile: reference("profile"),
     tags: z.array(z.string()),
     photo: z.boolean(),
+    lang: z.string(),
   }),
 });
 
@@ -79,7 +80,7 @@ const languages = defineCollection({
   type: "data",
   schema: z.record(
     z.object({
-      proficiency: z.string(),
+      proficiency: z.record(z.string()),
       flag: z.string(),
     })
   ),
