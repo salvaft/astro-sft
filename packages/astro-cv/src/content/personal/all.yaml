@@ -1,6 +1,7 @@
 name: Jane
 surname: Doe
 profession: Professional title
+headshot: "/headshot.webp"
 social:
   Github: 
     username: jdoe

@@ -9,3 +9,5 @@ jobs:
   - job-one
 
 profile: b
+lang: en
+photo: true
