@@ -80,7 +80,7 @@ const languages = defineCollection({
   type: "data",
   schema: z.record(
     z.object({
-      proficiency: z.string(),
+      proficiency: z.record(z.string()),
       flag: z.string(),
     })
   ),
