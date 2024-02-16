@@ -7,7 +7,7 @@ interface Props {
   photo:boolean;
 }
 const { personal, photo } = Astro.props;
-
+const maxWidth = photo? "60%" : "100%";
 ---
 <script>
   const textBlockHeader = document.querySelector("#headerTextBlock");
@@ -18,7 +18,7 @@ const { personal, photo } = Astro.props;
 </script>
 <header >
   <article >
-  { personal.data.headshot && <img id="headshot" src={personal.data.headshot} class:list={[{"show-if-photo":photo}]} alt=`Profile picture of ${personal.data.name}` />}
+  { photo && personal.data.headshot && <img id="headshot" src={personal.data.headshot} class:list={[{"show-if-photo":photo}]} alt=`Profile picture of ${personal.data.name}` />}
   <main id="headerTextBlock">
   <h1><span class="name">{personal.data.name}</span> {personal.data.surname}</h1>
     <div class="column">
@@ -30,9 +30,11 @@ const { personal, photo } = Astro.props;
 </article>
 
 </header>
-<style>
+<style define:vars={{ maxWidth }}>
   article {
     display: flex;
+    column-gap: 2rem;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     height: fit-content;
@@ -58,6 +60,8 @@ const { personal, photo } = Astro.props;
   main {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: var(--maxWidth);
   }
   .column {
     display: flex;
