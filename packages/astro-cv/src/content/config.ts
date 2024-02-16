@@ -14,6 +14,7 @@ const cvs = defineCollection({
     profile: reference("profile"),
     tags: z.array(z.string()),
     photo: z.boolean(),
+    lang: z.string(),
   }),
 });
 
