@@ -94,6 +94,7 @@ const personal = defineCollection({
       z.object({
         username: z.string(),
         href: z.string(),
+        image: z.string().optional(),
       })
     ),
     name: z.string(),
