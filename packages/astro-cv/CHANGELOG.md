@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.2.1
+
+### Patch Changes
+
+- Added jobtitle as cv entry property
+
 ## 0.2.0
 
 ### Minor Changes
