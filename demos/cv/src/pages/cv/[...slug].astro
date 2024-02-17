@@ -39,6 +39,6 @@ const languages = await getEntry("languages", "all");
 
 <Base title={`${entry.data.company} - ${flavor}`}>
   <Sheet slug={entry.id}>
-    <Flavor photo={entry.data.photo} lang={entry.data.lang} {work} {profile} {education} {personal} {skills} {languages} />
+    <Flavor photo={entry.data.photo} lang={entry.data.lang} {work} {profile} {education} {personal} {skills} {languages} jobTitle={entry.data.jobTitle} />
   </Sheet>
 </Base>

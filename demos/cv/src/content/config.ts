@@ -7,7 +7,9 @@ const cvs = defineCollection({
   schema: z.object({
     company: z.string(),
     logo: z.string(),
+    date: z.date(),
     description: z.string(),
+    jobTitle: z.string(),
     author: z.string(),
     jobs: z.array(reference("work")),
     education: z.array(reference("education")),

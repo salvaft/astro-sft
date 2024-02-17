@@ -1,8 +1,10 @@
 company: "Company"
 description: "This is a description"
 author: "John Doe"
+jobTitle: "Software Developer"
 logo: "/favicon.webp"
 tags: ["cv", "astro"]
+date: 2021-01-01
 education:
   - education-two
 jobs:
