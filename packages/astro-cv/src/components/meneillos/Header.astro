@@ -5,8 +5,9 @@ import type {CollectionEntry} from "astro:content";
 interface Props {
   personal:CollectionEntry<"personal">;
   photo:boolean;
+  jobTitle:string;
 }
-const { personal, photo } = Astro.props;
+const { personal, photo,jobTitle } = Astro.props;
 const maxWidth = photo? "60%" : "100%";
 ---
 <script>
@@ -22,7 +23,7 @@ const maxWidth = photo? "60%" : "100%";
   <main id="headerTextBlock">
   <h1><span class="name">{personal.data.name}</span> {personal.data.surname}</h1>
     <div class="column">
-      <div class="diploma">{personal.data.profession}</div>
+      <div class="diploma">{jobTitle}</div>
       <hr />
       <Social social={personal.data.social}/>
     </div>

@@ -6,7 +6,7 @@ import Skills from "#/components/meneillos/Skills.astro";
 import Languages from "#/components/meneillos/Languages.astro";
 import meneillosCSS from "#/styles/meneillos.css?url";
 
-import type {CollectionEntry} from "astro:content";
+import { type CollectionEntry} from "astro:content";
 import i18n from "#/i18n/i18n.json";
 
 
@@ -18,9 +18,10 @@ interface Props {
   languages: CollectionEntry<"languages">,
   skills: CollectionEntry<"skills">,
   photo: boolean,
-  lang: keyof typeof i18n
+  lang: keyof typeof i18n,
+  jobTitle: string
 }
-const {lang="en", profile,  education,  work, personal, languages, skills, photo } = Astro.props;
+const {lang="en", profile,  education,  work, personal, languages, skills, photo,jobTitle } = Astro.props;
 
 export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
 export type Profile = CollectionEntry<"profile">;
@@ -42,7 +43,7 @@ export type Profile = CollectionEntry<"profile">;
   }
 </style>
 <div class="wrapper">
-  <Header {personal} {photo} />
+  <Header {personal} {photo} {jobTitle} />
   <Section {lang}  section="profile" profile={profile} />
   <Section {lang} section="education" entries={education} />
   <Section {lang} section="work" entries={work} />
