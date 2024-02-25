@@ -15,9 +15,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./layouts": "./src/layouts/layouts.ts",
-    "./components": "./src/components/components.ts",
-    "./cv/flavors": "./src/components/cv-flavors.ts",
-    "./cl/flavors": "./src/components/cl-flavors.ts"
+    "./flavors": "./src/components/flavors.ts",
+    "./pages": "./src/components/pages.ts"
   },
   "files": [
     "src"
@@ -33,8 +32,10 @@
     "install": "node src/scripts/installation.js"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.1.0",
-    "astro": "^4.2.6"
+    "@astrojs/mdx": "^2.1.1",
+    "astro": "^4.4.4",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
   },
   "peerDependencies": {
     "astro": "^4.0.0"
