@@ -1,0 +1,31 @@
+---
+import { getEntry } from "astro:content";
+import Sheet from "#/layouts/sheet.astro";
+import type { AstroInstance } from "astro";
+import { type CollectionEntry } from "astro:content";
+
+const flavorsFiles: AstroInstance[] = await Astro.glob(
+    "../*/letter/base.astro",
+);
+
+const flavors = flavorsFiles.map((flav) => {
+    return {
+        name: flav.default.moduleId?.split("/").at(-3),
+        component: flav.default,
+    };
+});
+
+interface Props {
+    entry: CollectionEntry<"cls">;
+    flavor: string;
+    standalone?: boolean;
+}
+
+const { entry, flavor, standalone } = Astro.props;
+const Flavor = flavors.find((flav) => flav.name === flavor)?.component;
+const personal = await getEntry("personal", "all");
+---
+
+<Sheet slug={entry.slug} { standalone } >
+    <Flavor {personal} {entry} />
+</Sheet>

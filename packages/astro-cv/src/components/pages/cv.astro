@@ -1,0 +1,47 @@
+---
+import { getEntries, getEntry } from "astro:content";
+import Sheet from "#/layouts/sheet.astro";
+import type { AstroInstance } from "astro";
+import { type CollectionEntry } from "astro:content";
+import availableFlavors from "#/components/flavors";
+
+const flavorsFiles: AstroInstance[] = await Astro.glob("../*/base.astro");
+
+const flavors = flavorsFiles.map((flav) => {
+    return {
+        name: flav.default.moduleId?.split("/").at(-2),
+        component: flav.default,
+    };
+});
+
+interface Props {
+    entry: CollectionEntry<"cvs">;
+    flavor: (typeof availableFlavors)[number];
+    standalone?: boolean;
+}
+
+const { entry, flavor, standalone } = Astro.props;
+
+const Flavor = flavors.find((flav) => flav.name === flavor)?.component;
+
+const work = await getEntries(entry.data.jobs);
+const education = await getEntries(entry.data.education);
+const profile = await getEntry(entry.data.profile);
+const personal = await getEntry("personal", "all");
+const skills = await getEntry("skills", "percentages");
+const languages = await getEntry("languages", "all");
+---
+
+<Sheet {standalone} slug={entry.id}>
+    <Flavor
+        photo={entry.data.photo}
+        lang={entry.data.lang}
+        {work}
+        {profile}
+        {education}
+        {personal}
+        {skills}
+        {languages}
+        jobTitle={entry.data.jobTitle}
+    />
+</Sheet>
