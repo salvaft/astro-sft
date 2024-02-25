@@ -3,12 +3,15 @@ surname: Doe
 profession: Professional title
 headshot: "/headshot.webp"
 social:
-  Github: 
+  Github:
     username: jdoe
     href: https://github.com/jdoe
-  Linkedin: 
+    icon: github
+  Linkedin:
     username: jdoe
     href: https://www.linkedin.com/in/jdoe
-  Email: 
+    icon: linkedin
+  Email:
     username: jdoe
     href: mailto:jdoe@gmail.com
+    icon: email

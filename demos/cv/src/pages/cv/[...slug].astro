@@ -1,44 +1,23 @@
 ---
-import { getCollection, getEntries, getEntry } from "astro:content";
-import { Sheet } from "@salvaft/astro-cv/layouts";
 import Base from "../../layouts/base.astro";
-import type { AstroInstance } from "astro";
+import { getCollection } from "astro:content";
+import { CV } from "@salvaft/astro-cv/pages";
+import flavors from "@salvaft/astro-cv/flavors";
 
 export async function getStaticPaths() {
-  const cvEntries = await getCollection("cvs");
-
-  const pages = cvEntries.map(async (entry) => {
-    const flavorsFiles: AstroInstance[] = await Astro.glob(
-      "../../../node_modules/@salvaft/astro-cv/src/components/*/base.astro"
-    );
-
-    const flavors = flavorsFiles.map((flav) => {
-      return {
-        name: flav.default.moduleId?.split("/").at(-2),
-        component: flav.default,
-      };
+    const cvEntries = await getCollection("cvs");
+    return cvEntries.flatMap((entry) => {
+        return flavors.map((flavor) => {
+            return {
+                params: { slug: entry.id + "/" + flavor },
+                props: { entry, flavor: flavor },
+            };
+        });
     });
-
-    return flavors.map((flavor) => ({
-      params: { slug: entry.id + "/" + flavor.name },
-      props: { entry, Flavor: flavor.component, flavor: flavor.name },
-    }));
-  });
-  return (await Promise.all(pages)).flat();
 }
-
-const { entry, Flavor, flavor } = Astro.props;
-
-const work = await getEntries(entry.data.jobs);
-const education = await getEntries(entry.data.education);
-const profile = await getEntry(entry.data.profile);
-const personal = await getEntry("personal", "all");
-const skills = await getEntry("skills", "percentages");
-const languages = await getEntry("languages", "all");
+const { entry, flavor } = Astro.props;
 ---
 
 <Base title={`${entry.data.company} - ${flavor}`}>
-  <Sheet slug={entry.id}>
-    <Flavor photo={entry.data.photo} lang={entry.data.lang} {work} {profile} {education} {personal} {skills} {languages} jobTitle={entry.data.jobTitle} />
-  </Sheet>
+    <CV {flavor} {entry}  />
 </Base>

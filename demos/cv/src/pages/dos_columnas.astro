@@ -1,28 +1,13 @@
 ---
-import Base from "../layouts/base.astro"
-import {Sheet} from "@salvaft/astro-cv/layouts"
-import {TwoCols} from "@salvaft/astro-cv/flavors"
+import Base from "../layouts/base.astro";
+import { CV } from "@salvaft/astro-cv/pages";
 
-import { getEntries, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const entry: CollectionEntry<"cvs"> = await getEntry("cvs","company-one");
-const work = await getEntries(entry.data.jobs);
-const education = await getEntries(entry.data.education);
-const profile = await getEntry(entry.data.profile);
-const personal  = await getEntry("personal", "all");
-const skills = await getEntry("skills", "percentages");
-const languages = await getEntry("languages", "all");
-
-
-
-
-
+const entry: CollectionEntry<"cvs"> = await getEntry("cvs", "company-one");
 ---
 
 <Base>
-    <Sheet data-singlePage>
-        <TwoCols {work} {profile} {education} {personal} {skills} {languages}/>
-    </Sheet>
+    <CV flavor="two_columns" {entry} standalone />
 </Base>
-

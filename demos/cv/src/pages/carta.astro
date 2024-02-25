@@ -2,17 +2,10 @@
 import { getEntry, type CollectionEntry } from "astro:content";
 import Base from "../layouts/base.astro";
 
-import {Sheet} from "@salvaft/astro-cv/layouts"
-import {Meneillos} from "@salvaft/astro-cv/cl/flavors"
-
-const entry: CollectionEntry<"cls"> = await getEntry("cls","company-one");
-const personal  = await getEntry("personal", "all");
-
+import { CL } from "@salvaft/astro-cv/pages";
+const entry: CollectionEntry<"cls"> = await getEntry("cls", "company-one");
 ---
+
 <Base>
-  <Sheet  slug={entry.slug}>
-    <Meneillos {personal} {entry} />
-  </Sheet>
+    <CL flavor="meneillos" {entry} standalone />
 </Base>
-
-

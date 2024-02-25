@@ -84,17 +84,30 @@ const languages = defineCollection({
     z.object({
       proficiency: z.record(z.string()),
       flag: z.string(),
-    })
+    }),
   ),
 });
 const personal = defineCollection({
   type: "data",
   schema: z.object({
     social: z.record(
-      z.object({
-        username: z.string(),
-        href: z.string(),
-      })
+      z
+        .object({
+          username: z.string(),
+          href: z.string(),
+          image: z.string().optional(),
+          icon: z.string().optional(),
+        })
+        .refine(
+          (data) => {
+            const image = "image" in data;
+            const icon = "icon" in data;
+            return (image && !icon) || (!image && icon);
+          },
+          {
+            message: "Object can have either key1 or key2, but not both.",
+          },
+        ),
     ),
     name: z.string(),
     surname: z.string(),
