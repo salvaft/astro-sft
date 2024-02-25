@@ -6,20 +6,23 @@ import Skills from "./Skills.astro";
 import Header from "#/components/two_columns/Header.astro";
 
 import two_colsCSS from "#/styles/two_cols.css?url";
-
-import type {TPersonal, TProfile, TSkills, TEducation, TWork, TLanguages } from "#/schemas/collection.ts"
-
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  profile: TProfile,
-  education: TEducation[],
-  work: TWork[],
-  personal: TPersonal,
-  skills: TSkills,
-  languages: TLanguages
+  profile: CollectionEntry<"profile">,
+  education: CollectionEntry<"education">[],
+  work: CollectionEntry<"work">[],
+  personal: CollectionEntry<"personal">,
+  languages: CollectionEntry<"languages">,
+  skills: CollectionEntry<"skills">,
+  photo: boolean
 }
+const { profile,  education,  work, personal, languages, skills } = Astro.props;
 
-const { profile,  education,  work, personal, skills, languages } = Astro.props;
+
+export type Entries = (CollectionEntry<"work">|CollectionEntry<"education">) [];
+export type Profile = CollectionEntry<"profile">;
+---
 
 
 ---
