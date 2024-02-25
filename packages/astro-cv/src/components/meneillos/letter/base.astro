@@ -2,30 +2,29 @@
 import Header from "./Header.astro";
 import Recipient from "./Recipient.astro";
 
-
-const {entry, personal} = Astro.props
+const { entry, personal } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-  <div class="wrapper">
+<div class="wrapper letter">
     <Header {personal} />
     <Recipient contactData={entry.data.contact} />
     <Content />
-  </div>
+</div>
 
 <style>
-  .wrapper {
-    padding: 10mm 20mm;
-    min-height: 297mm;
-    max-height: 297mm;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-family: var(--font-hedvig);
-  }
-  :global(p) {
-    font-family: var(--font-onest);
-    font-size: var(--step--1);
-    color: var(--gris-mas-oscuro);
-  }
+    .wrapper {
+        padding: 10mm 20mm;
+        min-height: 297mm;
+        max-height: 297mm;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-family: var(--font-hedvig);
+    }
+    :global(.letter p) {
+        font-family: var(--font-onest);
+        font-size: var(--step--1);
+        color: var(--gris-mas-oscuro);
+    }
 </style>
