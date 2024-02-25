@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.3.0
+
+### Minor Changes
+
+- Add page component that can be standalone or used for dynamic routes. Sheet is no longer publicly available.
+
 ## 0.2.1
 
 ### Patch Changes
