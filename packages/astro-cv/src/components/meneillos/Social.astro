@@ -1,72 +1,70 @@
 ---
-import  Icon from "#/components/icon.astro";
+import Icon from "#/components/icon.astro";
 import type { CollectionEntry } from "astro:content";
 
-interface Props{
-  social: CollectionEntry<"personal">["data"]["social"];
+interface Props {
+    social: CollectionEntry<"personal">["data"]["social"];
 }
-const {
-  social
-} = Astro.props;
+const { social } = Astro.props;
 ---
 
 <ul class="list">
-  {
-    Object.entries(social).map(async (entry) => {
-      const [socialNetwork, {href,username}] = entry;
-      const iconName = socialNetwork.toLowerCase();
-      return (
-        <li class="element">
-          <Icon class="small" name={iconName} />
-          <a href={href} target="_blank">
-            {username}
-          </a>
-        </li>
-      );
-    })
-  }
+    {
+        Object.values(social).map(async (entry) => {
+            const { href, username, image, icon } = entry;
+            return (
+                <li class="element">
+                    {image && <img src={image} class="small" alt="Logo" />}
+                    {icon && <Icon class="small" name={icon} />}
+                    <a href={href} target="_blank">
+                        {username}
+                    </a>
+                </li>
+            );
+        })
+    }
 </ul>
 
 <style>
-  .small {
-    width: 10px;
-    height: 10px;
-  }
-  a {
-    text-decoration: none;
-    color: var(--gris-oscuro);
-    font-size: var(--step--3);
-    font-variant-caps: normal;
-    &:hover {
-      text-decoration: underline;
+    .small {
+        width: 10px;
+        height: 10px;
     }
-  }
-  .list {
-    display: grid;
-    grid-auto-flow: column;
-    place-content: center;
-    gap: 1rem;
-  }
-  .element {
-    display: flex;
-    gap: 0.2rem;
-  }
-  li {
-    display: flex;
-    gap: 0.1rem;
-    align-items: center;
-    height: 10px;
-    &:first-child {
-      &::before {
-        content: none;
-        margin-right: 0;
-      }
+    a {
+        text-decoration: none;
+        color: var(--gris-oscuro);
+        font-size: var(--step--3);
+        font-variant-caps: normal;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-    &::before {
-      content: "|";
-      font-size: 10px;
+    .list {
+        display: grid;
+        grid-auto-flow: column;
+        place-content: center;
+        gap: 1rem;
+    }
+    .element {
+        display: flex;
+        gap: 0.2rem;
+    }
+    li {
+        display: flex;
+        gap: 0.1rem;
+        align-items: center;
+        height: 10px;
+        &:first-child {
+            &::before {
+                content: none;
+                margin-right: 0;
+            }
+        }
+        &::before {
+            content: "|";
+            font-size: 10px;
 
-      margin-right: 1rem;
+            margin-right: 1rem;
+        }
     }
-  }
 </style>
