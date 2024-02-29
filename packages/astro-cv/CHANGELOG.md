@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.3.1
+
+### Patch Changes
+
+- Fix typo in two_columns base
+
 ## 0.3.0
 
 ### Minor Changes
