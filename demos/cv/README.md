@@ -34,10 +34,10 @@
 <div align="center">
 
 ![Astro Badge](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff&style=flat)
-![GitHub stars](https://img.shields.io/github/stars/salvaft/cv-mock)
-![GitHub issues](https://img.shields.io/github/issues/salvaft/cv-mock)
-![GitHub forks](https://img.shields.io/github/forks/salvaft/cv-mock)
-![GitHub PRs](https://img.shields.io/github/issues-pr/salvaft/cv-mock)
+![GitHub stars](https://img.shields.io/github/stars/salvaft/astro-sft)
+![GitHub issues](https://img.shields.io/github/issues/salvaft/astro-sft)
+![GitHub forks](https://img.shields.io/github/forks/salvaft/astro-sft)
+![GitHub PRs](https://img.shields.io/github/issues-pr/salvaft/astro-sft)
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
 
 </div>
