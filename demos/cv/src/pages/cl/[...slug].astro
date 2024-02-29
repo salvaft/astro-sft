@@ -1,24 +1,24 @@
 ---
-import { getCollection,  } from "astro:content";
+import { getCollection } from "astro:content";
 import Base from "../../layouts/base.astro";
-import flavors from "@salvaft/astro-cv/flavors";
-
+// import flavors from "@salvaft/astro-cv/flavors";
 import { CL } from "@salvaft/astro-cv/pages";
-export async function getStaticPaths() {
-    const clEntries = await getCollection("cls");
 
-    return clEntries.flatMap((entry) => {
-        return flavors.map((flavor) => {
-            return {
-                params: { slug: entry.slug + "/" + flavor },
-                props: { entry, flavor: flavor },
-            };
-        });
-    });
+export async function getStaticPaths() {
+  const clEntries = await getCollection("cls");
+
+  return clEntries.map((entry) => {
+    // return flavors.map((flavor) => {
+    return {
+      params: { slug: entry.slug + "/" + "meneillos" },
+      props: { entry, flavor: "meneillos" },
+    };
+    //   });
+  });
 }
 const { entry, flavor } = Astro.props;
 ---
 
 <Base title={`${entry.data.organization} - ${flavor}`}>
-    <CL {entry} {flavor} />
+  <CL {entry} {flavor} />
 </Base>

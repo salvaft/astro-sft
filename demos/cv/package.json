@@ -12,8 +12,10 @@
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/mdx": "^2.1.0",
+    "@astrojs/tailwind": "^5.1.0",
     "@salvaft/astro-cv": "workspace:*",
     "astro": "^4.2.6",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
   "version": null

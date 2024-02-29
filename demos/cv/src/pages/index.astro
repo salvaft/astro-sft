@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import Card from "../components/card.astro";
+const cvEntries = await getCollection("cvs");
+
+const sortedEntries = cvEntries.sort((a, b) => {
+  if (a.data.date > b.data.date) {
+    return -1;
+  }
+  if (a.data.date < b.data.date) {
+    return 1;
+  }
+  return 0;
+});
+import Base from "../layouts/base.astro";
+---
+
+<Base title="Summary">
+  <main class="content">
+    <h1>Job Applications</h1>
+
+    <ul>
+      {
+        sortedEntries.map((entry) => (
+          <li>
+            <Card
+              slug={`/cv/${entry.id}/meneillos`}
+              company={entry.data.company}
+              description={entry.data.description}
+              img={entry.data.logo}
+              position={entry.data.jobTitle}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Base>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Libre+Baskerville:wght@400;700&family=Montserrat+Alternates:wght@400;700&family=Onest:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+  ul {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  body {
+    background-color: hsl(221, 39%, 11%);
+    color: hsl(207, 81%, 61%);
+    font-family: "Poppins", sans-serif;
+  }
+  .content {
+    max-width: 1440px;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  h1 {
+    font-size: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+    text-align: center;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :root {
+    /* Typography */
+    --step--3: clamp(0.64rem, 0.6552rem + -0.0196vw, 0.6513rem);
+    --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+    --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+    --step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+    --step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+    --step-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+  }
+</style>
