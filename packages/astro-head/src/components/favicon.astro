@@ -1,0 +1,31 @@
+---
+interface Props {
+  input: string;
+}
+const { input } = Astro.props;
+
+const sizes = [
+  16, 32, 64, 196, 160, 96, 64, 32, 16, 57, 114, 72, 144, 60, 120, 76, 152, 180,
+];
+if (import.meta.env.DEV) {
+  const { generateFavicons } = await import("../generator/index.js");
+
+  generateFavicons({ input, sizes });
+}
+---
+
+<link rel="icon" type="image/webp" sizes="196x196" href="/favicon-192.webp" />
+<link rel="icon" type="image/webp" sizes="160x160" href="/favicon-160.webp" />
+<link rel="icon" type="image/webp" sizes="96x96" href="/favicon-96.webp" />
+<link rel="icon" type="image/webp" sizes="64x64" href="/favicon-64.webp" />
+<link rel="icon" type="image/webp" sizes="32x32" href="/favicon-32.webp" />
+<link rel="icon" type="image/webp" sizes="16x16" href="/favicon-16.webp" />
+<link rel="apple-touch-icon" href="/favicon-57.webp" />
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.webp" />
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.webp" />
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.webp" />
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.webp" />
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.webp" />
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.webp" />
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.webp" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.webp" />
