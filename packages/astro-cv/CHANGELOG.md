@@ -1,5 +1,11 @@
 # @salvaft/astro-cv
 
+## 0.3.2
+
+### Patch Changes
+
+- Fix typos and section styles not being effective
+
 ## 0.3.1
 
 ### Patch Changes
