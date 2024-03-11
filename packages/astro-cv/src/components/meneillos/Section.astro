@@ -1,25 +1,23 @@
 ---
 import SectionHeading from "#/components/meneillos/SectionHeading.astro";
 import ArticleHeader from "#/components/meneillos/ArticleHeader.astro";
-import type { Entries,  } from "#/components/meneillos/base.astro";
+import type { Entries } from "#/components/meneillos/base.astro";
 import type { Profile } from "#/components/meneillos/base.astro";
-import i18n from "#/i18n/i18n.json"
-
+import i18n from "#/i18n/i18n.json";
 
 interface Props {
   langs?: boolean;
   entries?: Entries;
   profile?: Profile;
   lang: keyof typeof i18n;
-  section: keyof typeof i18n[keyof typeof i18n];
-
+  section: keyof (typeof i18n)[keyof typeof i18n];
 }
 
-let { section, entries, profile,lang } = Astro.props;
+let { section, entries, profile, lang } = Astro.props;
 
 let ProfileContent = null;
 if (profile) {
-  ProfileContent = (await profile.render()).Content
+  ProfileContent = (await profile.render()).Content;
 }
 ---
 
@@ -62,19 +60,18 @@ if (profile) {
     font-family: var(--font-poppins);
     font-size: var(--step--2);
     color: var(--gris-oscuro);
-    p {
+    /* Md rendered*/
     & :global(p) {
       font-weight: 300;
-      line-height: var(--lh);
     }
     & :global(a) {
       text-decoration: underline;
     }
   }
-
   article {
     display: grid;
     gap: var(--btw-p);
+    /* Md rendered, in particular in the entries list*/
     & :global(strong) {
       font-weight: 500;
     }
