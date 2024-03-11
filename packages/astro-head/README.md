@@ -1,5 +1,5 @@
 <div align="center">
-<img src="public/favicon.webp" height="50px" width="auto" /> 
+<img src="https://salvaft.dev/favicon.webp" height="50px" width="auto" /> 
 <h2>
     Astro-head
 </h2>
