@@ -1,10 +1,10 @@
 ---
 import Icon from "#/components/icon.astro";
-const flavorsFiles = await Astro.glob("./*/base.astro");
+const globResult = import.meta.glob("./*/base.astro", { eager: true }) as Record<string, unknown>;
 
-const flavors = flavorsFiles.map((flav) => {
+const flavors = Object.keys(globResult).map((path) => {
     return {
-        name: flav.default.moduleId?.split("/").at(-2),
+        name: path.split("/").at(-2),
     };
 });
 const { slug, ...rest } = Astro.props;

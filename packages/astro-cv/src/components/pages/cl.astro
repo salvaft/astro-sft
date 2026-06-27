@@ -1,17 +1,14 @@
 ---
 import { getEntry } from "astro:content";
 import Sheet from "#/layouts/sheet.astro";
-import type { AstroInstance } from "astro";
 import { type CollectionEntry } from "astro:content";
 
-const flavorsFiles: AstroInstance[] = await Astro.glob(
-    "../*/letter/base.astro",
-);
+const globResult = import.meta.glob("../*/letter/base.astro", { eager: true }) as Record<string, { default: any }>;
 
-const flavors = flavorsFiles.map((flav) => {
+const flavors = Object.entries(globResult).map(([path, mod]) => {
     return {
-        name: flav.default.moduleId?.split("/").at(-3),
-        component: flav.default,
+        name: path.split("/").at(-3),
+        component: mod.default,
     };
 });
 
@@ -26,6 +23,6 @@ const Flavor = flavors.find((flav) => flav.name === flavor)?.component;
 const personal = await getEntry("personal", "all");
 ---
 
-<Sheet slug={entry.slug} { standalone } >
+<Sheet slug={entry.id} { standalone } >
     <Flavor {personal} {entry} />
 </Sheet>

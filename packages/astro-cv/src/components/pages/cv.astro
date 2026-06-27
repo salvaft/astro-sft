@@ -1,16 +1,15 @@
 ---
 import { getEntries, getEntry } from "astro:content";
 import Sheet from "#/layouts/sheet.astro";
-import type { AstroInstance } from "astro";
 import { type CollectionEntry } from "astro:content";
 import availableFlavors from "#/components/flavors";
 
-const flavorsFiles: AstroInstance[] = await Astro.glob("../*/base.astro");
+const globResult = import.meta.glob("../*/base.astro", { eager: true }) as Record<string, { default: any }>;
 
-const flavors = flavorsFiles.map((flav) => {
+const flavors = Object.entries(globResult).map(([path, mod]) => {
     return {
-        name: flav.default.moduleId?.split("/").at(-2),
-        component: flav.default,
+        name: path.split("/").at(-2),
+        component: mod.default,
     };
 });
 

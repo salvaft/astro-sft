@@ -10,12 +10,13 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
     "./layouts": "./src/layouts/layouts.ts",
     "./flavors": "./src/components/flavors.ts",
+    "./cl/flavors": "./src/components/cl-flavors.ts",
     "./pages": "./src/components/pages.ts"
   },
   "files": [

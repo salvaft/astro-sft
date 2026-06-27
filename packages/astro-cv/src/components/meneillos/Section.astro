@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import SectionHeading from "#/components/meneillos/SectionHeading.astro";
 import ArticleHeader from "#/components/meneillos/ArticleHeader.astro";
 import type { Entries } from "#/components/meneillos/base.astro";
@@ -17,7 +18,7 @@ let { section, entries, profile, lang } = Astro.props;
 
 let ProfileContent = null;
 if (profile) {
-  ProfileContent = (await profile.render()).Content;
+  ProfileContent = (await render(profile)).Content;
 }
 ---
 
@@ -26,9 +27,9 @@ if (profile) {
   {
     entries && (
       <ul class="long-entries">
-        {entries.map(async (entry) => {
+        {entries.filter(Boolean).map(async (entry) => {
           const { data } = entry;
-          const { Content } = await entry.render();
+          const { Content } = await render(entry);
           return (
             <li>
               <article>

@@ -22,7 +22,7 @@ const { work } = Astro.props;
   <SectionHeading>Work Experience</SectionHeading>
   <div>
     {
-      work.map(async (entry) => {
+      work.filter(Boolean).map(async (entry) => {
         const { data } = entry;
         return (
           <>

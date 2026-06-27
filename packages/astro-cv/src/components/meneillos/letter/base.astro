@@ -1,9 +1,10 @@
 ---
+import { render } from "astro:content";
 import Header from "./Header.astro";
 import Recipient from "./Recipient.astro";
 
 const { entry, personal } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <div class="wrapper letter">
