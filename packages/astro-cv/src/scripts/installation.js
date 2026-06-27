@@ -19,7 +19,7 @@ function copyDirectorySync(source, destination) {
   if (existsSync(destination)) return;
   console.log("Copying files from", sourceFolder, "to", destinationFolder);
 
-  mkdirSync(destination);
+  mkdirSync(destination, { recursive: true });
 
   const files = readdirSync(source);
   for (const file of files) {
@@ -35,8 +35,10 @@ function copyDirectorySync(source, destination) {
 }
 
 copyDirectorySync(sourceFolder, destinationFolder);
-const sourceConfig = resolve(sourceFolder, "config.ts");
-const destinationConfig = resolve(destinationFolder, "config.ts");
-copyFileSync(sourceConfig, destinationConfig);
+const sourceConfig = resolve(__dirname, "../content.config.ts");
+const destinationConfig = resolve(process.env.INIT_CWD, "src/content.config.ts");
+if (!existsSync(destinationConfig)) {
+  copyFileSync(sourceConfig, destinationConfig);
+}
 
 console.log("Content files copied successfully!");

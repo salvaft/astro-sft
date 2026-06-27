@@ -1,9 +1,8 @@
-// Import utilities from `astro:content`
 import { defineCollection, reference, z } from "astro:content";
+import { glob } from "astro/loaders";
 
-// Define a `type` and `schema` for each collection
 const cvs = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.{yaml,yml,json}", base: "./src/content/cvs" }),
   schema: z.object({
     company: z.string(),
     logo: z.string(),
@@ -20,9 +19,8 @@ const cvs = defineCollection({
   }),
 });
 
-// Define a `type` and `schema` for each collection
 const cls = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/cls" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -39,23 +37,22 @@ const cls = defineCollection({
 });
 
 const skills = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.{yaml,yml,json}", base: "./src/content/skills" }),
   schema: z.object({
-    short: z.record(z.string()),
-    extra: z.record(z.string()).optional(),
+    short: z.record(z.string(), z.string()),
+    extra: z.record(z.string(), z.string()).optional(),
   }),
 });
 
 const profile = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/profile" }),
   schema: z.object({
     tags: z.array(z.string()),
   }),
 });
 
-// TOOD use same interface for work?
 const education = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/education" }),
   schema: z.object({
     title: z.string(),
     titleShort: z.string(),
@@ -66,8 +63,9 @@ const education = defineCollection({
     placeShort: z.string(),
   }),
 });
+
 const work = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/work" }),
   schema: z.object({
     title: z.string(),
     points: z.optional(z.array(z.string())),
@@ -79,18 +77,21 @@ const work = defineCollection({
 });
 
 const languages = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.{yaml,yml,json}", base: "./src/content/languages" }),
   schema: z.record(
+    z.string(),
     z.object({
-      proficiency: z.record(z.string()),
+      proficiency: z.record(z.string(), z.string()),
       flag: z.string(),
     }),
   ),
 });
+
 const personal = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.{yaml,yml,json}", base: "./src/content/personal" }),
   schema: z.object({
     social: z.record(
+      z.string(),
       z
         .object({
           username: z.string(),
@@ -116,7 +117,6 @@ const personal = defineCollection({
   }),
 });
 
-// Export a single `collections` object to register your collection(s)
 export const collections = {
   cvs,
   cls,
