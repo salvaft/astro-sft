@@ -45,8 +45,8 @@ export type Profile = CollectionEntry<"profile">;
 <div class="wrapper">
   <Header {personal} {photo} {jobTitle} />
   <Section {lang}  section="profile" profile={profile} />
-  <Section {lang} section="education" entries={education} />
   <Section {lang} section="work" entries={work} />
+  <Section {lang} section="education" entries={education} />
   <Skills {lang} {skills}/>
   <Languages {lang} {languages}/>
 </div>
