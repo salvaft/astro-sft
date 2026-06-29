@@ -1,5 +1,24 @@
 # @salvaft/astro-cv
 
+## 0.4.1
+
+### Patch Changes
+
+- Position work experience section before education in the default layout
+
+## 0.4.0
+
+### Minor Changes
+
+- Upgrade to Astro 7: migrate to content layer API, replace `Astro.glob` and `entry.render()`, fix CSS media query compatibility
+
+## 0.3.3
+
+### Patch Changes
+
+- Add anchor styles inside paragraphs of markdown-rendered content
+- Fix typos in meneillos Section component
+
 ## 0.3.2
 
 ### Patch Changes
